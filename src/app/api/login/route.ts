@@ -8,12 +8,16 @@ export async function POST(req: NextRequest) {
     const { username, password } = await req.json();
   
 
-
-    const pool = await getConnection();
-    const result = await pool.request()
-      .input('Username', sql.NVarChar(100), username)
-      .input('Password',sql.NVarChar(), password)
-      .query('SELECT * FROM Users WHERE Username = @Username AND Password = @Password');
+const result = {
+  recordset: [
+    { Id: 1, username: 'user1', password: 'pass1', Role: 'coach' },
+  ]
+};
+    // const pool = await getConnection();
+    // const result = await pool.request()
+    //   .input('Username', sql.NVarChar(100), username)
+    //   .input('Password',sql.NVarChar(), password)
+    //   .query('SELECT * FROM Users WHERE Username = @Username AND Password = @Password');
     const user = result.recordset[0];
     
     if (!user) {
