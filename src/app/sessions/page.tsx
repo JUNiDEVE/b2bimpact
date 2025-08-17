@@ -22,7 +22,7 @@ export default function Sessions() {
 
       .catch((err) => console.error("Fetch error:", err)); // Log fetch errors
   }, []);
-  function formatDateOnly(dateString) {
+  function formatDateOnly(dateString: string) {
     return new Date(dateString).toISOString().split("T")[0]; // "YYYY-MM-DD"
   }
   const currentMonth = new Date(2025, 7); // Month is 0-indexed → 7 = August
