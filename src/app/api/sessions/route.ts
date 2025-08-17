@@ -13,11 +13,11 @@ export async function GET(req: NextRequest) {
 
 const result = {
   recordset: [
-    { id: 1, coachId: 'coach123', Date: '2024-01-15', Time: '10:00', sessionType: 'individual' },
-    { id: 2, coachId: 'coach123', Date: '2024-01-16', Time: '14:30', sessionType: 'group' },
-    { id: 3, coachId: 'coach123', Date: '2024-01-17', Time: '09:00', sessionType: 'workshop' },
+    { id: 1, coachId: 'coach123', Date: '2024-01-15', Time: '10:00', sessionType: 'Private session' },
+    { id: 2, coachId: 'coach123', Date: '2024-01-16', Time: '14:30', sessionType: 'Public session' },
+    { id: 3, coachId: 'coach123', Date: '2024-01-17', Time: '09:00', sessionType: 'Matchday' },
     { id: 4, coachId: 'coach123', Date: '2024-01-18', Time: '16:00', sessionType: 'individual' },
-    { id: 5, coachId: 'coach123', Date: '2024-01-19', Time: '11:30', sessionType: 'group' }
+    { id: 5, coachId: 'coach123', Date: '2024-01-19', Time: '11:30', sessionType: 'Public session' }
   ]
 };
 
