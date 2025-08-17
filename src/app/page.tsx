@@ -19,6 +19,8 @@ export default function Home() {
       body: JSON.stringify({ username, password }),
     });
     const data = await res.json();
+    console.log(res);
+    
     if (res.ok) {
       
       if (data.user.Role == "coach")

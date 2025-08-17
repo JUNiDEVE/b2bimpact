@@ -17,7 +17,8 @@ export default function SessionsContent() {
   function formatDateOnly(dateString: any) {
     return new Date(dateString).toISOString().split("T")[0];
   }
-  const currentMonth = new Date(2025, 7);
+  // Changed to January 2024 to match your test data
+  const currentMonth = new Date(2024, 0); // 0 = January
   const monthName = currentMonth.toLocaleString("default", { month: "long" });
   const year = currentMonth.getFullYear();
 
@@ -37,7 +38,7 @@ export default function SessionsContent() {
 
         {/* Calendar days */}
         {Array.from({ length: 31 }).map((_, day: number) => {
-          const dateString = `2025-08-${String(day + 1).padStart(2, "0")}`;
+          const dateString = `2024-01-${String(day + 1).padStart(2, "0")}`;
           const daySessions = sessions.filter((s: any) => formatDateOnly(s.Date) === dateString);
 
           return (
@@ -60,7 +61,7 @@ export default function SessionsContent() {
                   key={idx}
                   className="w-full mb-1 rounded-lg bg-black text-yellow-300 text-[10px] px-2 py-1 leading-tight shadow-inner"
                 >
-                  <p className="font-semibold text-sm">{session.TypeOfSession}</p>
+                  <p className="font-semibold text-sm">{session.sessionType}</p>
                   <p className="text-[10px]">{session.Time}</p>
                 </div>
               ))}
