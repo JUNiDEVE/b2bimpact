@@ -4,14 +4,26 @@ import { useEffect, useState } from "react";
 
 export default function SessionsContent() {
   const searchParams = useSearchParams();
-  const [sessions, setSessions] = useState([]);
+  const [sessions, setSessions] = useState<any[]>([]);
   const userId = searchParams?.get("userId");
 
   useEffect(() => {
     fetch(`/api/sessions?userId=${userId}`)
       .then((res) => res.json())
-      .then((data) => setSessions(data))
-      .catch((err) => console.error("Fetch error:", err));
+      .then((data) => {
+        console.log("Received data:", data);
+        // Ensure data is an array
+        if (Array.isArray(data)) {
+          setSessions(data);
+        } else {
+          console.warn("Data is not an array:", data);
+          setSessions([]);
+        }
+      })
+      .catch((err) => {
+        console.error("Fetch error:", err);
+        setSessions([]);
+      });
   }, [userId]);
 
   function formatDateOnly(dateString: any) {
@@ -39,7 +51,9 @@ export default function SessionsContent() {
         {/* Calendar days */}
         {Array.from({ length: 31 }).map((_, day: number) => {
           const dateString = `2024-01-${String(day + 1).padStart(2, "0")}`;
-          const daySessions = sessions.filter((s: any) => formatDateOnly(s.Date) === dateString);
+          const daySessions = Array.isArray(sessions) 
+            ? sessions.filter((s: any) => formatDateOnly(s.Date) === dateString)
+            : [];
 
           return (
             <div

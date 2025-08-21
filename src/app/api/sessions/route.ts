@@ -3,9 +3,9 @@ import { getConnection } from "../../../../lib/db";
 
 export async function GET(req: NextRequest) {
   try {
-    const pool = await getConnection();
-    const url = new URL(req.url);
-    const coachId = url.searchParams.get('userId');
+    // const pool = await getConnection();
+    // const url = new URL(req.url);
+    // const coachId = url.searchParams.get('userId');
     
     // const result = await pool.request()
     // .input('userId', coachId)
